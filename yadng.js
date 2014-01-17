@@ -27,7 +27,7 @@ function doDrag(e) {
 }
 
 function doDrop(e) {
-	if (e.dataTransfer.dropEffect == "copy") {
+	if (e.dataTransfer.dropEffect != "none") {
 		if (e.preventDefault) {
 			e.preventDefault();
 		}
@@ -36,7 +36,7 @@ function doDrop(e) {
 			chrome.extension.connect().postMessage(_tab);
 			return false;
 		}
-	}
+}
 }
 
 // thanks to wenzhang.zhu@http://code.google.com/u/wenzhang.zhu/
@@ -71,14 +71,14 @@ function getDragSelection(e) {
 function doYadng(_tab) {
 	if (_tab.message == 'tab') {
 		chrome.tabs.getSelected(null, function(tab) {
-					_set_index(_tab, tab.index);
+					//_set_index(_tab, tab.index);
 					_set_selected(_tab);
 					if (!_tab.isUrl)
 						_set_search_url(_tab);
 					chrome.tabs.create({
 								"url" : _tab.url,
 								"selected" : _tab.selected,
-								"index" : _tab.index
+								"index" : tab.index+1
 							});
 				});
 	}
