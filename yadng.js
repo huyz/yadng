@@ -4,6 +4,7 @@ var _url_regex_1 = /[^\s]*\.(com|net|org|gov|edu|info|uk|hk|cn|au|ca|de|fr|jp|kr
 var _url_regex_2 = /^javascript:/;
 
 var _dragstart = function(e) {
+	_yadng.document = document;
 	_yadng.isSearch = false;
 	_yadng.startX = e.x;
 	_yadng.startY = e.y;
@@ -43,6 +44,11 @@ var _dragstart = function(e) {
 };
 
 var _dragover = function(e) {
+	// If we didn't get a dragstart event, this means that the drag could have started
+	// from another extension's pop-up window, e.g., a password manager's extension.
+	if (!_yadng.document) {
+		return;
+	}
 	if (e.preventDefault) {
 		e.preventDefault();
 	}
@@ -50,6 +56,11 @@ var _dragover = function(e) {
 };
 
 var _drop = function(e) {
+	// If we didn't get a dragstart event, this means that the drag could have started
+	// from another extension's pop-up window, e.g., a password manager's extension.
+	if (!_yadng.document) {
+		return;
+	}
 	if (e.stopPropagation) {
 		e.stopPropagation();
 	}
@@ -60,6 +71,16 @@ var _drop = function(e) {
 	}
 	return false;
 };
+
+var _dragend = function(e) {
+	// If we didn't get a dragstart event, this means that the drag could have started
+	// from another extension's pop-up window, e.g., a password manager's extension.
+	if (!_yadng.document) {
+		return;
+	}
+	_yadng.document = undefined;
+};
+
 
 var _doYadng = function(_yadng) {
 	chrome.tabs.getSelected(null, function(tab) {
@@ -123,4 +144,5 @@ chrome.runtime.onConnect.addListener(function(port) {
 		});
 document.addEventListener('dragstart', _dragstart, false);
 document.addEventListener('dragover', _dragover, false);
+document.addEventListener('dragend', _dragend, false);
 document.addEventListener('drop', _drop, false);
