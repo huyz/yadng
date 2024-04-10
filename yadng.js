@@ -118,6 +118,16 @@ var _doSearch = function(_yadng, tab) {
 
 var _doLink = function(_yadng, tab) {
 	chrome.storage.sync.get(['indexMode', 'selectedMode'], function(r) {
+		// 2024-04-09 huyz: Hard-coded: Invoke Velja
+		if (_yadng.endX < _yadng.startX && _yadng.endY > _yadng.startY) {
+			chrome.tabs.update(
+				tab.id, {
+					url: `velja:open?fromBrowserExtension&url=${encodeURIComponent(_yadng.selection)}`,
+				},
+			)
+			return;
+		}
+
 				var ti = tab.index;
 				var index = ti + 1;
 				if (r.indexMode == '2') {
