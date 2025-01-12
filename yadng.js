@@ -119,10 +119,10 @@ var _doSearch = function(_yadng, tab) {
 var _doLink = function(_yadng, tab) {
 	chrome.storage.sync.get(['indexMode', 'selectedMode'], function(r) {
 		// 2024-04-09 huyz: Hard-coded: Invoke Velja
-		if (_yadng.endX < _yadng.startX && _yadng.endY > _yadng.startY) {
+		if (_yadng.endX < _yadng.startX) {
 			chrome.tabs.update(
 				tab.id, {
-					url: `velja:open?fromBrowserExtension&url=${encodeURIComponent(_yadng.selection)}`,
+					url: `velja:open?fromBrowserExtension&url=${encodeURIComponent(_yadng.selection)}` + (_yadng.endY < _yadng.startY ? '&prompt' : ''),
 				},
 			)
 			return;
@@ -137,7 +137,9 @@ var _doLink = function(_yadng, tab) {
 				}
 				var selected = false;
 				if (r.selectedMode == '2') {
-					selected = _yadng.endY > _yadng.startY ? false : true;
+          // 2025-01-11 huyz: flip BE/FE so that it makes sense for vertical tabs just as well as horizontal tabs
+					//selected = _yadng.endY > _yadng.startY ? false : true;
+					selected = _yadng.endY > _yadng.startY ? true: false;
 				} else {
 					selected = r.selectedMode == '0' ? true : false;
 				}

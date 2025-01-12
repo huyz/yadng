@@ -53,8 +53,8 @@ Drag URL to open at Back/Front, Before/After; Drag text to 4 directions to searc
 
 
 ## Features ##
-1. Open a link/text-url in Front-End/Back-End, or drag UP to Front-End, Down to Back-End
-2. Open a link/text-url Before/After current tab, or drag LEFT to Before, Right to After
+1. Open a link/text-url in Front-End/Back-End, or drag UP to Back-End, Down to Front-End
+2. Open a link/text-url Before/After current tab, or drag LEFT for Velja, Right for regular YADNG behavior
 3. Drag selected text to 4 different areas(LU/RU/LD/RD) to search by different search engines
 4. 17 search engines built-in: wikipedia, google, douban, twitter, bing, taobao, shooter, amazon, delicious, flickr, youtube, ebay, imdb, google encrypted, wolfram alpha, yahoo, technorati
 5. Easy to add any search engines by yourself (right click the URL bar --> edit search engines --> choose one --> copy the search URL --> paste into the "options" page)

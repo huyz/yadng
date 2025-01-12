@@ -60,7 +60,7 @@
 		"message" : "Always <strong>Back-End</strong>"
 	},
 	"selected_mode_2_label" : {
-		"message" : "Drag Up to <strong>FE</strong>, Down to <strong>BE</strong> <span class=\"label label-danger\">NOT in Search Mode</span>"
+		"message" : "Drag Up to <strong>BE</strong>, Down to <strong>FE</strong> <span class=\"label label-danger\">NOT in Search Mode</span>"
 	},
 	"index_mode_0_label" : {
 		"message" : "Always <strong>After</strong>"
@@ -69,7 +69,7 @@
 		"message" : "Always <strong>Before</strong>"
 	},
 	"index_mode_2_label" : {
-		"message" : "Drag Right to <strong>After</strong>, Left to <strong>Before</strong> <span class=\"label label-danger\">NOT in Search Mode</span>"
+		"message" : "Drag Right to <strong>After</strong> <span class=\"label label-danger\">NOT in Search Mode</span>, Left for <strong>Velja</strong>"
 	},
 	"lu_strong" : {
 		"message" : "Left-Up"
